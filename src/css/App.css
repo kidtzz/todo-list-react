@@ -9,7 +9,7 @@
 }
 
 .App {
-  background: #e5e5e5;
+  background: #f4f4f4;
   position: absolute;
   left: 0px;
   top: 0px;
@@ -40,8 +40,45 @@
   color: #ffffff;
 }
 
-.main {
-  background: #e5e5e5;
+.main .activities .card {
+  border: none !important;
+  background-color: #fff !important;
+  border-radius: 12px;
+  margin-bottom: 26px;
+  position: relative;
+  -webkit-box-shadow: 0 6px 10px #0000001a;
+          box-shadow: 0 6px 10px #0000001a;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -o-border-radius: 12px;
+}
+
+.main .activities .card a {
+  text-decoration: none;
+  outline: 0;
+  color: #000;
+}
+
+.main .activities .card .text-muted {
+  color: #8e8ea3;
+}
+
+.main .activities .card .card-body h4 {
+  display: block;
+  -webkit-margin-before: 1.33em;
+          margin-block-start: 1.33em;
+  -webkit-margin-after: 1.33em;
+          margin-block-end: 1.33em;
+  -webkit-margin-start: 0px;
+          margin-inline-start: 0px;
+  -webkit-margin-end: 0px;
+          margin-inline-end: 0px;
+}
+
+.main .activities .card .card-body .card-item-title {
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .main button {

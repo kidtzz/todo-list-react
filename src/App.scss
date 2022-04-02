@@ -7,8 +7,8 @@
     font-style: normal;
 }
 .App {
-    background: #e5e5e5;
-    position: abs olute;
+    background: #f4f4f4;
+    position: absolute;
     left: 0px;
     top: 0px;
     width: 100%;
@@ -32,8 +32,41 @@
     }
 }
 .main {
-    background: #e5e5e5;
-
+    .activities {
+        .card {
+            border: none !important;
+            background-color: #fff !important;
+            border-radius: 12px;
+            margin-bottom: 26px;
+            position: relative;
+            box-shadow: 0 6px 10px #0000001a;
+            -webkit-border-radius: 12px;
+            -moz-border-radius: 12px;
+            -ms-border-radius: 12px;
+            -o-border-radius: 12px;
+            a {
+                text-decoration: none;
+                outline: 0;
+                color: #000;
+            }
+            .text-muted {
+                color: #8e8ea3;
+            }
+            .card-body {
+                h4 {
+                    display: block;
+                    margin-block-start: 1.33em;
+                    margin-block-end: 1.33em;
+                    margin-inline-start: 0px;
+                    margin-inline-end: 0px;
+                }
+                .card-item-title {
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
     button {
         position: static;
         height: 54px;
@@ -49,30 +82,6 @@
         .bi-plus {
             margin-top: 4px;
             font-size: 30px;
-        }
-    }
-    .activities {
-        .card {
-            width: 30vh;
-            border: none !important;
-            background-color: #fff !important;
-            border-radius: 20px !important;
-            padding: 22px 27px;
-            margin-bottom: 26px;
-            position: relative;
-            box-shadow: 0 6px 10px rgb(0 0 0 / 10%);
-            -webkit-border-radius: 20px !important;
-            -moz-border-radius: 20px !important;
-            -ms-border-radius: 20px !important;
-            -o-border-radius: 20px !important;
-            a {
-                text-decoration: none;
-                outline: 0;
-                color: #000;
-            }
-            .text-muted {
-                color: #8e8ea3;
-            }
         }
     }
 }
