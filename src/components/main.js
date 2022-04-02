@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const Main = () => {
+    const url = "https://todo.api.devcode.gethired.id/activity-groups";
+    useEffect(() => {
+        apiData();
+    });
+
+    const [activity, setActivity] = useState([]);
+    const [loading, setLoading] = useState([false]);
+
+    const apiData = async () => {
+        try {
+            const res = await axios.get(url);
+            setActivity(res.data.data);
+            setLoading(true);
+        } catch (err) {
+            alert(err.message);
+        }
+    };
     return (
-        <div class="main todo-wrapper-container">
-            <div class="todo-w-100">
-                <div class="todo-d-flex todo-justify-content-between todo-my-4 todo-align-items-center">
+        <div className="main wrapper-container container">
+            <div className="w-100">
+                <div class="d-flex justify-content-between my-4 align-items-center">
                     <h1
-                        class="todo-my-0 todo-font-weight-semi-bold"
+                        class="my-0 font-weight-semi-bold"
                         data-cy="activity-title"
                     >
                         Activity
@@ -14,41 +32,50 @@ const Main = () => {
                     <div>
                         <button
                             data-cy="activity-add-button"
-                            class="todo-btn todo-btn-primary"
+                            class="btn btn-primary"
                         >
-                            <span class="todo-icon-plus todo-mr-2"></span>Tambah
+                            <span class="bi bi-plus mr-2"></span>Tambah
                         </button>
                     </div>
                 </div>
-                <div class="todo-activities">
-                    <div class="todo-p-2">
-                        <div class="todo-card">
-                            <a data-cy="activity-item" href="/detail/23736332">
-                                <div class="todo-card-body">
-                                    <h4
-                                        data-cy="activity-item-title"
-                                        class="todo-card-item-title todo-mt-0"
-                                    >
-                                        New Activity Group 101
-                                    </h4>
+                <div className="activities">
+                    {loading &&
+                        activity.map((activity, index) => {
+                            return (
+                                <div className="p-2" key={index}>
+                                    <div className="card">
+                                        <a
+                                            data-cy="activity-item"
+                                            href={activity.id}
+                                        >
+                                            <div className="card-body">
+                                                <h4
+                                                    data-cy="activity-item-title"
+                                                    className="card-item-title  mt-0"
+                                                >
+                                                    {activity.title}
+                                                </h4>
+                                            </div>
+                                        </a>
+                                        <div className="d-flex justify-content-between">
+                                            <div
+                                                className="text-muted fs-md"
+                                                data-cy="activity-item-date"
+                                            >
+                                                {activity.created_at}
+                                            </div>
+                                            <div className="fs-md">
+                                                <span
+                                                    className="icon-trash pointer"
+                                                    data-cy="activity-item-delete-button"
+                                                ></span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </a>
-                            <div class="todo-d-flex todo-justify-content-between">
-                                <div
-                                    class="todo-text-muted todo-fs-md"
-                                    data-cy="activity-item-date"
-                                >
-                                    1 April 2022
-                                </div>
-                                <div class="todo-fs-md">
-                                    <span
-                                        class="todo-icon-trash todo-pointer"
-                                        data-cy="activity-item-delete-button"
-                                    ></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            );
+                        })}
+                    ;
                 </div>
             </div>
         </div>

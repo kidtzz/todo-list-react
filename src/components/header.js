@@ -2,11 +2,11 @@ import React from "react";
 
 const Header = () => {
     return (
-        <div class="todo-header" data-cy="header-background">
-            <div class="todo-container ">
+        <div className="todo-header" data-cy="header-background">
+            <div className="todo-container container ">
                 <h2
                     data-cy="header-title"
-                    class="todo-wrapper-container todo-header-title"
+                    className="todo-wrapper-container container header-title"
                 >
                     TO DO LIST APP
                 </h2>
