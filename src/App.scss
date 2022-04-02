@@ -8,7 +8,7 @@
 }
 .App {
     background: #e5e5e5;
-    position: absolute;
+    position: abs olute;
     left: 0px;
     top: 0px;
     width: 100%;
@@ -49,6 +49,30 @@
         .bi-plus {
             margin-top: 4px;
             font-size: 30px;
+        }
+    }
+    .activities {
+        .card {
+            width: 30vh;
+            border: none !important;
+            background-color: #fff !important;
+            border-radius: 20px !important;
+            padding: 22px 27px;
+            margin-bottom: 26px;
+            position: relative;
+            box-shadow: 0 6px 10px rgb(0 0 0 / 10%);
+            -webkit-border-radius: 20px !important;
+            -moz-border-radius: 20px !important;
+            -ms-border-radius: 20px !important;
+            -o-border-radius: 20px !important;
+            a {
+                text-decoration: none;
+                outline: 0;
+                color: #000;
+            }
+            .text-muted {
+                color: #8e8ea3;
+            }
         }
     }
 }

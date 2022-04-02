@@ -38,35 +38,35 @@ const Main = () => {
                         </button>
                     </div>
                 </div>
-                <div className="activities">
+                <div className="row activities">
                     {loading &&
                         activity.map((activity, index) => {
                             return (
-                                <div className="p-2" key={index}>
-                                    <div className="card">
+                                <div class="col-lg-3 col-md-3 p-2" key={index}>
+                                    <div class="card">
                                         <a
                                             data-cy="activity-item"
                                             href={activity.id}
                                         >
-                                            <div className="card-body">
+                                            <div class="card-body">
                                                 <h4
                                                     data-cy="activity-item-title"
-                                                    className="card-item-title  mt-0"
+                                                    class="card-item-title mt-0"
                                                 >
                                                     {activity.title}
                                                 </h4>
                                             </div>
                                         </a>
-                                        <div className="d-flex justify-content-between">
+                                        <div class="d-flex justify-content-between">
                                             <div
-                                                className="text-muted fs-md"
+                                                class="text-muted fs-md"
                                                 data-cy="activity-item-date"
                                             >
                                                 {activity.created_at}
                                             </div>
-                                            <div className="fs-md">
+                                            <div class="fs-md">
                                                 <span
-                                                    className="icon-trash pointer"
+                                                    class="bi bi-trash pointer"
                                                     data-cy="activity-item-delete-button"
                                                 ></span>
                                             </div>
