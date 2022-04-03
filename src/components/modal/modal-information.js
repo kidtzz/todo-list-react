@@ -1,17 +1,15 @@
 import React from "react";
 
 const ModalInformation = () => {
-
-    
     return (
-        <div className="todo-modal-wrapper">
+        <div className="modal-wrapper">
             <div
-                className="todo-modal-content todo-modal-info"
+                className="modal-content modal-info"
                 data-cy="modal-information"
             >
-                <div className="todo-d-inline-flex todo-justify-content-between todo-align-items-center todo-my-4">
+                <div className="d-inline-flex justify-content-between align-items-center my-4">
                     <span
-                        className="todo-icon-info-circle todo-text-primary todo-mr-2 todo-fs-lg"
+                        className="bi bi-info-circle text-primary mr-2 fs-lg"
                         data-cy="modal-information-icon"
                     ></span>
                     <span data-cy="modal-information-title">
