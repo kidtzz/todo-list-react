@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import ModalAdd from "./modal/modal-add.";
 
 const Main = () => {
     const url = "https://todo.api.devcode.gethired.id/activity-groups";
@@ -19,22 +20,27 @@ const Main = () => {
             alert(err.message);
         }
     };
+
+    const [modalOpen, setModalOpen] = useState(false);
     return (
         <div className="main wrapper-container container">
             <div className="w-100">
                 <div className="d-flex justify-content-between my-4 align-items-center">
-                    <h1
-                        className="my-0 font-weight-semi-bold"
-                        data-cy="activity-title"
-                    >
+                    <h2 className="my-0 fw-bold" data-cy="activity-title">
                         Activity
-                    </h1>
+                    </h2>
                     <div>
                         <button
                             data-cy="activity-add-button"
                             className="btn btn-primary"
+                            onClick={() => {
+                                setModalOpen(true);
+                            }}
                         >
                             <span className="bi bi-plus mr-2"></span>Tambah
+                            {modalOpen && (
+                                <ModalAdd setOpenModalAdd={setModalOpen} />
+                            )}
                         </button>
                     </div>
                 </div>

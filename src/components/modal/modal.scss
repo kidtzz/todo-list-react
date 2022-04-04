@@ -1,0 +1,39 @@
+.modal-content-bg {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    .modal-content {
+        top: 35%;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 90vh;
+        display: flex;
+        background: #fff;
+        box-shadow: 0 4px 10px rgb(0 0 0);
+        align-items: center;
+        border-radius: 12px;
+        flex-direction: column;
+
+        .modal-add-title {
+            font-family: "Poppins";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 27px;
+            color: #111111;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .form-selet {
+            width: 100px;
+        }
+    }
+}
