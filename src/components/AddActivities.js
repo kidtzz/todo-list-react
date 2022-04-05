@@ -3,36 +3,46 @@ import ModalAdd from "./modal/modal-add.";
 // import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 // import Main from "./main";
-import axios from "axios";
+import api from "../api/activities";
 
 export default function AddAcitivites() {
     //modal bro
     const [modalOpen, setModalOpen] = useState(false);
     //API
-    const baseUrl = "https://todo.api.devcode.gethired.id/todo-items/";
-    const [item, setItem] = useState([]);
-    const [loading, setLoading] = useState([false]);
+    // const baseUrl = "https://todo.api.devcode.gethired.id/todo-items/";
+    // const [item, setItem] = useState([]);
+    // const [loading, setLoading] = useState([false]);
 
     //get data axios
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const response = await axios.get(baseUrl);
-                setItem(response.data.data);
-                setLoading(true);
-            } catch (error) {
-                console.error(error.message);
-            }
-        };
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         try {
+    //             const response = await axios.get(baseUrl);
+    //             setItem(response.data.data);
+    //             setLoading(true);
+    //         } catch (error) {
+    //             console.error(error.message);
+    //         }
+    //     };
 
-        getData();
+    //     getData();
+    // }, []);
+
+    const [activities, setActivities] = useState([]);
+
+    //RetrieveActivities
+    const retrivieActivities = async () => {
+        const response = await api.get("/activities");
+        return response.data;
+    };
+
+    useEffect(() => {
+        const getAllActivities = async () => {
+            const allActivities = await retrivieActivities();
+            if (allActivities) setActivities(allActivities);
+        };
+        getAllActivities();
     }, []);
-    function deletePost(id) {
-        axios.delete(`${baseUrl}`).then(() => {
-            alert("Post deleted!");
-            setItem(null);
-        });
-    }
 
     return (
         <div className="AddActivities">
@@ -72,31 +82,30 @@ export default function AddAcitivites() {
             </div>
             <div className=" container mb-5 bodyActivities">
                 <div className="row">
-                    {loading &&
-                        item.map((value, index) => {
-                            return (
-                                <div key={index}>
-                                    <div className="card mb-2 border-0 shadow w-100">
-                                        <div className="d-flex justify-content-between align-items-center card-body">
-                                            <div className="d-flex align-items-center card-title">
-                                                <input
-                                                    className="form-check-input mx-2"
-                                                    type="checkbox"
-                                                    value=""
-                                                />
-                                                <h5>{value.title}</h5>
-                                            </div>
-                                            <div className="card-icon">
-                                                <i
-                                                    className="bi bi-trash"
-                                                    onClick={deletePost}
-                                                ></i>
-                                            </div>
+                    {activities.map((value, index) => {
+                        return (
+                            <div key={index}>
+                                <div className="card mb-2 border-0 shadow w-100">
+                                    <div className="d-flex justify-content-between align-items-center card-body">
+                                        <div className="d-flex align-items-center card-title">
+                                            <input
+                                                className="form-check-input mx-2"
+                                                type="checkbox"
+                                                value=""
+                                            />
+                                            <h5>{value.title}</h5>
+                                        </div>
+                                        <div className="card-icon">
+                                            <i
+                                                className="bi bi-trash"
+                                                onClick={retrivieActivities}
+                                            ></i>
                                         </div>
                                     </div>
                                 </div>
-                            );
-                        })}
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </div>
