@@ -168,4 +168,12 @@
   font-size: 30px;
   cursor: pointer;
 }
+
+.AddActivities .bodyActivities .card {
+  @apply shadow-md border-0 rounded-2xl;
+}
+
+.AddActivities .bodyActivities .card i {
+  @apply text-gray-500 cursor-pointer text-lg;
+}
 /*# sourceMappingURL=App.css.map */

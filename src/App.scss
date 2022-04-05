@@ -103,7 +103,6 @@
 //Activities
 
 .AddActivities {
-    background: #e5e5e5;
     .btn-sort {
         display: flex;
         flex-direction: row;
@@ -136,5 +135,13 @@
         font-weight: bold;
         font-size: 30px;
         cursor: pointer;
+    }
+    .bodyActivities {
+        .card {
+            @apply shadow-md border-0 rounded-2xl;
+            i {
+                @apply text-gray-500 cursor-pointer text-lg;
+            }
+        }
     }
 }

@@ -6,26 +6,33 @@ import "react-dropdown/style.css";
 import axios from "axios";
 
 export default function AddAcitivites() {
+    //modal bro
+    const [modalOpen, setModalOpen] = useState(false);
+    //API
     const baseUrl = "https://todo.api.devcode.gethired.id/todo-items/";
-    useEffect(() => {
-        apiData();
-    });
     const [item, setItem] = useState([]);
     const [loading, setLoading] = useState([false]);
 
     //get data axios
-    const apiData = async () => {
-        try {
-            const response = await axios.get(baseUrl);
-            setItem(response.data.data);
-            setLoading(true);
-        } catch (err) {
-            alert(err.message);
-        }
-    };
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const response = await axios.get(baseUrl);
+                setItem(response.data.data);
+                setLoading(true);
+            } catch (error) {
+                console.error(error.message);
+            }
+        };
 
-    //modal bro
-    const [modalOpen, setModalOpen] = useState(false);
+        getData();
+    }, []);
+    function deletePost(id) {
+        axios.delete(`${baseUrl}`).then(() => {
+            alert("Post deleted!");
+            setItem(null);
+        });
+    }
 
     return (
         <div className="AddActivities">
@@ -63,17 +70,28 @@ export default function AddAcitivites() {
                     {modalOpen && <ModalAdd setOpenModalAdd={setModalOpen} />}
                 </div>
             </div>
-            <div className=" container bodyActivities">
+            <div className=" container mb-5 bodyActivities">
                 <div className="row">
                     {loading &&
-                        item.map((e, index) => {
+                        item.map((value, index) => {
                             return (
                                 <div key={index}>
-                                    <div class="card w-100">
-                                        <div class="card-body">
-                                            {e.title}
-                                            This is some text within a card
-                                            body.
+                                    <div className="card mb-2 border-0 shadow w-100">
+                                        <div className="d-flex justify-content-between align-items-center card-body">
+                                            <div className="d-flex align-items-center card-title">
+                                                <input
+                                                    className="form-check-input mx-2"
+                                                    type="checkbox"
+                                                    value=""
+                                                />
+                                                <h5>{value.title}</h5>
+                                            </div>
+                                            <div className="card-icon">
+                                                <i
+                                                    className="bi bi-trash"
+                                                    onClick={deletePost}
+                                                ></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
