@@ -4,35 +4,18 @@ import ModalAdd from "./modal/modal-add.";
 import "react-dropdown/style.css";
 // import Main from "./main";
 import api from "../api/activities";
+// import alert from "./modal/modal-information";
 
 export default function AddAcitivites() {
     //modal bro
     const [modalOpen, setModalOpen] = useState(false);
-    //API
-    // const baseUrl = "https://todo.api.devcode.gethired.id/todo-items/";
-    // const [item, setItem] = useState([]);
-    // const [loading, setLoading] = useState([false]);
-
-    //get data axios
-    // useEffect(() => {
-    //     const getData = async () => {
-    //         try {
-    //             const response = await axios.get(baseUrl);
-    //             setItem(response.data.data);
-    //             setLoading(true);
-    //         } catch (error) {
-    //             console.error(error.message);
-    //         }
-    //     };
-
-    //     getData();
-    // }, []);
 
     const [activities, setActivities] = useState([]);
 
     //RetrieveActivities
     const retrivieActivities = async () => {
         const response = await api.get("/activities");
+        console.log(response.data);
         return response.data;
     };
 
@@ -43,6 +26,14 @@ export default function AddAcitivites() {
         };
         getAllActivities();
     }, []);
+
+    //deleteActivities
+    const deleteActivities = (id) => {
+        api.delete(`/activities/${id}`).then(() => {
+            alert("Post deleted!");
+            setActivities(null);
+        });
+    };
 
     return (
         <div className="AddActivities">
@@ -98,7 +89,9 @@ export default function AddAcitivites() {
                                         <div className="card-icon">
                                             <i
                                                 className="bi bi-trash"
-                                                onClick={retrivieActivities}
+                                                onClick={() =>
+                                                    deleteActivities(value.id)
+                                                }
                                             ></i>
                                         </div>
                                     </div>

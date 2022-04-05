@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => {
     return (
-        <div className="todo-header" datacy="header-background">
+        <div className="todo-header" path="/" datacy="header-background">
             <div className="todo-container container ">
                 <h2
                     data-cy="header-title"
