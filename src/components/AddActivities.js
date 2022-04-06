@@ -4,6 +4,8 @@ import ModalAdd from "./modal/modal-add.";
 import "react-dropdown/style.css";
 // import Main from "./main";
 import api from "../api/activities";
+import Link from "react-router-dom";
+// import { EditText, EditTextarea } from "react-edit-text";
 // import alert from "./modal/modal-information";
 
 export default function AddAcitivites() {
@@ -30,10 +32,16 @@ export default function AddAcitivites() {
     //deleteActivities
     const deleteActivities = (id) => {
         api.delete(`/activities/${id}`).then(() => {
-            alert("Post deleted!");
             setActivities(null);
         });
     };
+
+    //update
+    // const updateActivities = (id) => {
+    //     api.post(`/activities/${id}`).then(() => {
+    //         console.log();
+    //     });
+    // };
 
     return (
         <div className="AddActivities">
@@ -86,12 +94,22 @@ export default function AddAcitivites() {
                                             />
                                             <h5>{value.title}</h5>
                                         </div>
+                                        {/* <EditText
+                                            type="text"
+                                            buttonsAlign="before"
+                                            defaultValue="What is real? How do you define real?"
+                                            onChange={handleChange}
+                                            onSave={updateActivities}
+                                        /> */}
                                         <div className="card-icon">
                                             <i
                                                 className="bi bi-trash"
-                                                onClick={() =>
-                                                    deleteActivities(value.id)
-                                                }
+                                                onClick={() => {
+                                                    deleteActivities(value.id);
+                                                    window.location.reload(
+                                                        false
+                                                    );
+                                                }}
                                             ></i>
                                         </div>
                                     </div>

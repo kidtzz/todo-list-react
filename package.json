@@ -13,6 +13,8 @@
     "react-bootstrap": "^2.2.2",
     "react-dom": "^18.0.0",
     "react-dropdown": "^1.9.2",
+    "react-dropdown-select": "^4.8.4",
+    "react-edit-text": "^4.4.0",
     "react-hook": "^0.0.1",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",

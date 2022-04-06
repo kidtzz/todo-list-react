@@ -1,61 +1,37 @@
 import React, { useState } from "react";
 import "./modal.scss";
 import api from "../../api/activities";
+// import Select from "react-dropdown-select";
 
 export default function ModalAdd({ setOpenModalAdd }) {
-    // const options = [
-    //     {
-    //         label: "Very High",
-    //         value: "1",
-    //     },
-    //     {
-    //         label: " High",
-    //         value: "2",
-    //     },
-    //     {
-    //         label: "Medium",
-    //         value: "3",
-    //     },
-    //     {
-    //         label: "Low ",
-    //         value: "4",
-    //     },
-    //     {
-    //         label: "Very Low",
-    //         value: "5",
-    //     },
-    // ];
-    // const [value, setValue] = React.useState("priority");
-
-    // const handleChange = (event) => {
-    //     setValue(event.target.value);
-    // };
-
     //axios Add data
-    const [data, setData] = useState({
+
+    const [itemD, setItemD] = useState({
         title: "",
         priority: "",
     });
 
     const handleChange = (e) => {
         const value = e.target.value;
-        setData({
-            ...data,
+        setItemD({
+            ...itemD,
             [e.target.name]: value,
         });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const userData = {
-            title: data.title,
-            priority: data.priority,
+        const useData = {
+            title: itemD.title,
+            priority: itemD.priority,
         };
-        api.post("/activities", userData).then((response) => {
+        api.post("/activities", useData).then((response) => {
             console.log(response.status);
-            console.log(response.data.token);
+            console.log(response.itemD.token);
         });
     };
+
+    // select
 
     return (
         <div className="modal-content-bg">
@@ -91,7 +67,7 @@ export default function ModalAdd({ setOpenModalAdd }) {
                                 placeholder="Tambahkan nama list item"
                                 data-cy="modal-add-name-input"
                                 name="title"
-                                defaultvalue={data.title}
+                                defaultvalue={itemD.title}
                                 onChange={handleChange}
                             />
                         </div>
@@ -106,28 +82,34 @@ export default function ModalAdd({ setOpenModalAdd }) {
                                     </b>
                                 </h6>
                             </div>
-                            <input
+
+                            {/* <input
                                 type="priority"
                                 className="form-control"
                                 placeholder="Tambahkan nama list item"
                                 data-cy="modal-add-name-input"
                                 name="priority"
-                                defaultvalue={data.priority}
+                                defaultvalue={itemD.priority}
                                 onChange={handleChange}
-                            />
+                            /> */}
 
-                            {/* <select
-                                value={value}
-                                onChange={handleChange}
+                            <select
                                 className=" form-select form-select-md "
                                 data-cy="modal-add-priority-dropdown"
                             >
-                                {options.map((option) => (
-                                    <option defaultValue={option.value}>
-                                        {option.label}
-                                    </option>
-                                ))}
-                            </select> */}
+                                <option Value="">
+                                    beton
+                                    <input
+                                        type="priority"
+                                        className="form-control"
+                                        placeholder="Tambahkan nama list item"
+                                        data-cy="modal-add-name-input"
+                                        name="priority"
+                                        defaultvalue={itemD.priority}
+                                        onChange={handleChange}
+                                    />
+                                </option>
+                            </select>
                         </div>
                         <div className=" divider  mt-4  mb-1"></div>
                         <div className=" text-right  mx-4  my-3">
@@ -135,6 +117,7 @@ export default function ModalAdd({ setOpenModalAdd }) {
                                 className=" btn  btn-primary"
                                 type="submit"
                                 data-cy="modal-add-save-button"
+                                onClick={() => window.location.reload(false)}
                             >
                                 Simpan
                             </button>
