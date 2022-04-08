@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./modal.scss";
 import api from "../../api/activities";
 // import Select from "react-dropdown-select";
+// import Dropdown from "react-bootstrap/Dropdown";
+// import DropdownButton from "react-bootstrap/DropdownButton";
 
 export default function ModalAdd({ setOpenModalAdd }) {
     //axios Add data
@@ -11,11 +13,11 @@ export default function ModalAdd({ setOpenModalAdd }) {
         priority: "",
     });
 
-    const handleChange = (e) => {
-        const value = e.target.value;
+    const handleChange = (event) => {
+        const value = event.target.value;
         setItemD({
             ...itemD,
-            [e.target.name]: value,
+            [event.target.name]: value,
         });
     };
 
@@ -82,45 +84,28 @@ export default function ModalAdd({ setOpenModalAdd }) {
                                     </b>
                                 </h6>
                             </div>
-
-                            {/* <input
+                            <div
                                 type="priority"
-                                className="form-control"
                                 placeholder="Tambahkan nama list item"
                                 data-cy="modal-add-name-input"
-                                name="priority"
-                                defaultvalue={itemD.priority}
-                                onChange={handleChange}
-                            /> */}
-
-                            <select
-                                className=" form-select form-select-md "
-                                data-cy="modal-add-priority-dropdown"
                             >
-                                <option Value="">
-                                    beton
-                                    <input
-                                        type="priority"
-                                        className="form-control"
-                                        placeholder="Tambahkan nama list item"
-                                        data-cy="modal-add-name-input"
-                                        name="priority"
-                                        defaultvalue={itemD.priority}
-                                        onChange={handleChange}
-                                    />
-                                </option>
-                            </select>
+                                <input
+                                    value="high"
+                                    name="priority"
+                                    defaultvalue={itemD.priority}
+                                    onChange={handleChange}
+                                />
+                            </div>
                         </div>
                         <div className=" divider  mt-4  mb-1"></div>
                         <div className=" text-right  mx-4  my-3">
-                            <button
+                            <input
                                 className=" btn  btn-primary"
                                 type="submit"
+                                value="submit"
                                 data-cy="modal-add-save-button"
                                 onClick={() => window.location.reload(false)}
-                            >
-                                Simpan
-                            </button>
+                            />
                         </div>
                     </form>
                 </div>

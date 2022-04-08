@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import ModalAdd from "./modal/modal-add.";
+import ModalDelete from "./modal/modal-delete";
 // import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 // import Main from "./main";
 import api from "../api/activities";
-import Link from "react-router-dom";
+// import Link from "react-router-dom";
 // import { EditText, EditTextarea } from "react-edit-text";
 // import alert from "./modal/modal-information";
 
 export default function AddAcitivites() {
     //modal bro
     const [modalOpen, setModalOpen] = useState(false);
-
+    const [modalDelete, setModalDelete] = useState(false);
     const [activities, setActivities] = useState([]);
 
     //RetrieveActivities
@@ -29,13 +30,12 @@ export default function AddAcitivites() {
         getAllActivities();
     }, []);
 
-    //deleteActivities
-    const deleteActivities = (id) => {
-        api.delete(`/activities/${id}`).then(() => {
-            setActivities(null);
-        });
-    };
-
+    // const deleteActivities = (id) => {
+    //     api.delete(`/activities/${id}`).then(() => {
+    //         setActivities(null);
+    //     });
+    // };
+    //
     //update
     // const updateActivities = (id) => {
     //     api.post(`/activities/${id}`).then(() => {
@@ -104,13 +104,23 @@ export default function AddAcitivites() {
                                         <div className="card-icon">
                                             <i
                                                 className="bi bi-trash"
+                                                // onClick={() => {
+                                                //     deleteActivities(value.id);
+                                                //     window.location.reload(
+                                                //         false
+                                                //     );
+                                                // }}
                                                 onClick={() => {
-                                                    deleteActivities(value.id);
-                                                    window.location.reload(
-                                                        false
-                                                    );
+                                                    setModalDelete(true);
                                                 }}
                                             ></i>
+                                            {modalDelete && (
+                                                <ModalDelete
+                                                    setOpenModalDelete={
+                                                        setModalDelete
+                                                    }
+                                                />
+                                            )}
                                         </div>
                                     </div>
                                 </div>
