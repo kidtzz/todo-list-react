@@ -36,7 +36,7 @@ export default function AddAcitivites() {
     //     });
     // };
     //
-    //update
+    //update///
     // const updateActivities = (id) => {
     //     api.post(`/activities/${id}`).then(() => {
     //         console.log();
