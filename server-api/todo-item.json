@@ -1,14 +1,9 @@
 {
-    "activities": [
-        {
-            "title": "jhe",
-            "priority": "",
-            "id": 1
-        },
-        {
-            "title": "jhehe",
-            "priority": "",
-            "id": 2
-        }
-    ]
+  "activities": [
+    {
+      "title": "jhe",
+      "priority": "",
+      "id": 1
+    }
+  ]
 }
