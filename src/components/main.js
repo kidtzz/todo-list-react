@@ -3,7 +3,7 @@ import axios from "axios";
 import ModalAdd from "./modal/modal-add.";
 
 const Main = () => {
-    const url = "https://todo.api.devcode.gethired.id/activity-groups";
+    const url = "https://todo.api.devcode.gethired.id/activity-groups?email=yoga%2B1%40skyshi.io";
     useEffect(() => {
         apiData();
     });
